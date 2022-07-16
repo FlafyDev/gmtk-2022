@@ -1,5 +1,6 @@
-tool
 extends Node2D
+
+signal animation_end;
 
 onready var _bottom_number_sprite = $DiceContainer/BottomNumber;
 onready var _top_number_sprite = $DiceContainer/TopNumber;
@@ -16,11 +17,15 @@ func animate(number: int):
 	_animation_player.play("fall");
 	
 func set_number_random():
-	set_number(_rng.randi_range(1, 6));
+	var num = _rng.randi_range(1, 5);
+	set_number(num + int(num >= number));
 
 # bottom_number = 0 means random.
 # bottom_number = -1 means no number.
-func set_number(top_number: int, bottom_number: int = 0):
+func set_number(top_number = null, bottom_number: int = 0):
+	if (top_number == null):
+		top_number = number;
+	
 	if bottom_number == 0:
 		bottom_number = _rng.randi_range(1, 5)
 		bottom_number += int(bottom_number >= top_number);
@@ -29,14 +34,15 @@ func set_number(top_number: int, bottom_number: int = 0):
 	if (bottom_number == -1):
 		_bottom_number_sprite.texture = null;
 	else:
-		_bottom_number_sprite.texture = _get_number_sprite(bottom_number, "bottom");
+		_bottom_number_sprite.texture = \
+			_get_number_sprite(bottom_number, "bottom");
 
 func _get_number_sprite(number: int, side: String):
 	return load("res://dice/parts/%s_%s.png" % [_name_to_number[number], side]);
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if (anim_name == "fall"):
-		set_number(number);
+		emit_signal("animation_end");
 
 var _name_to_number = [
 	"zero",

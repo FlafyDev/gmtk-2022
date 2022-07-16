@@ -5,6 +5,8 @@ export(int) var number = 1;
 onready var _dice = $Dice;
 onready var _shadow = $ColorRect;
 
+signal pressed;
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_dice.set_number(number, -1);
@@ -20,3 +22,8 @@ func _on_ChoiceDice_mouse_entered():
 func _on_ChoiceDice_mouse_exited():
 	_shadow.visible = false;
 
+func _on_ChoiceDice_gui_input(event):
+	if (event is InputEventMouseButton):
+		if (event.is_pressed()):
+			emit_signal("pressed");
+		
