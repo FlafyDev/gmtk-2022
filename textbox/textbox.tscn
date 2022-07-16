@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://textbox/new_styleboxflat.tres" type="StyleBox" id=1]
+[ext_resource path="res://textbox/font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://textbox/textbox.gd" type="Script" id=3]
+
+[node name="Textbox" type="Control"]
+margin_right = 270.0
+margin_bottom = 124.0
+script = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+
+[node name="Text" type="RichTextLabel" parent="Margin"]
+margin_right = 250.0
+margin_bottom = 104.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 2 )
+meta_underlined = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.083
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://dice/dice.png" type="Texture" id=1]
+[ext_resource path="res://dice/dice.gd" type="Script" id=2]
+[ext_resource path="res://dice/parts/six_bottom.png" type="Texture" id=3]
+[ext_resource path="res://dice/parts/two_top.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fall"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("DiceContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1.1, 1.4 ),
+"transitions": PoolRealArray( 6.72718, 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -400 ), Vector2( 0, 0 ), Vector2( 0, -200 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "set_number_random"
+}, {
+"args": [  ],
+"method": "set_number_random"
+} ]
+}
+
+[node name="Dice" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/fall = SubResource( 1 )
+
+[node name="DiceContainer" type="Node2D" parent="."]
+
+[node name="Dice" type="Sprite" parent="DiceContainer"]
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BottomNumber" type="Sprite" parent="DiceContainer"]
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TopNumber" type="Sprite" parent="DiceContainer"]
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
