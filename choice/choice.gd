@@ -8,9 +8,10 @@ var accepting_input = false;
 var selected_input = 0;
 
 func _ready():
-	start();
+	visible = false;
 
 func start():
+	visible = true;
 	accepting_input = false;
 	_animation_player.play("in")
 
@@ -23,6 +24,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if (anim_name == "in"):
 		accepting_input = true;
 	elif (anim_name == "out"):
+		visible = false;
 		emit_signal("result", selected_input);
 
 func _on_ChoiceDice1_pressed():

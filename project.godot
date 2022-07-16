@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="gmtk-2022"
-run/main_scene="res://arena/arena.tscn"
+run/main_scene="res://game_scene/game_scene.tscn"
 config/icon="res://icon.png"
 
 [display]

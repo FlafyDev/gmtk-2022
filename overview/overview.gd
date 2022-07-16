@@ -36,9 +36,9 @@ func _ready():
 		player_indicator.set_selected(false);
 		player_indicator.set_out(false);
 	
-	set_out([1])
-	
-	dramatic_match(0, 2);
+#	set_out([1])
+#
+#	dramatic_match(0, 2);
 	
 func dramatic_match(player1, player2):
 	_label.text = "\nThe next match is between...";

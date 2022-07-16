@@ -24,8 +24,9 @@ var turn = Turn.LEFT;
 
 func _ready():
 	_rng.randomize();
+	progress_bar.visible = false;
 
-	start(21);
+#	start(21);
 
 #func generate_event(a, b):
 #	return ["dialogue", 10, "Name 1", "Name 2", [
@@ -34,6 +35,7 @@ func _ready():
 #		]];
 
 func start(goal: int, initial_turn = Turn.RIGHT):
+	progress_bar.visible = true;
 	dice_sum = 0;
 	turn = initial_turn;
 	progress_bar.set_max_progress(goal);
