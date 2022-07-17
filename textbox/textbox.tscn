@@ -49,7 +49,8 @@ margin_bottom = 104.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = ExtResource( 2 )
 meta_underlined = false
-text = "Test test"
+text = "Test test
+Test test"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05

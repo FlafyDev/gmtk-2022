@@ -14,7 +14,7 @@ func _ready():
 
 func _input(event):
 	if OS.is_debug_build() && event.is_action_pressed("ui_accept"):
-		Engine.time_scale = 4;
+		Engine.time_scale = 100;
 
 func animate(number: int):
 	self.number = number;

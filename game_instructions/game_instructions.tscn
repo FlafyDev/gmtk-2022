@@ -27,7 +27,7 @@ anchor_bottom = 0.95
 margin_right = 864.0
 margin_bottom = 75.0
 custom_fonts/font = ExtResource( 2 )
-text = "HOW TO PLAY {GAME_NAME}.
+text = "Mischievous Die
 "
 align = 1
 

@@ -18,6 +18,8 @@ func _input(event):
 		if (playing && textNode.visible_characters > textNode.text.length()):
 			current_page += 1;
 			reset_page();
+		else:
+			textNode.visible_characters = textNode.text.length()+111;
 
 func play():
 	playing = true;

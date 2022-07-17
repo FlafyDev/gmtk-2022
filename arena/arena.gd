@@ -56,6 +56,7 @@ func start(goal: int, initial_turn = Turn.RIGHT):
 	turn = initial_turn;
 	progress_bar.set_max_progress(goal);
 	progress_bar.set_progress(dice_sum, false);
+	arena_background.set_players(left_player, right_player);
 	do_turn();
 
 func do_turn():
@@ -100,6 +101,14 @@ func process_event(event):
 			arena_background.in_or_out = "out";
 			arena_background.show_man();
 			yield(arena_background, "animation_finished");
+		"giorgio_phone_ring":
+			pass
+		"open_agents":
+			arena_background.animation_player.play("open_agents")
+			yield(arena_background.animation_player, "animation_finished");
+		"gang_in_and_out":
+			arena_background.animation_player.play("gang_in_and_out")
+			yield(arena_background.animation_player, "animation_finished");
 		_:
 			print("ERROR: unknown event type: %s" % [type]);
 	

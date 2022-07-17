@@ -20,11 +20,39 @@ onready var _lines = [
 ];
 onready var _dice = $VBoxContainer/HBoxContainer/Dice;
 onready var _dramatic_match_timer = $DramaticMatchTimer;
+onready var _players_mike = $Players/Mike;
+onready var _players_rachel = $Players/Rachel;
+onready var _players_james = $Players/James;
+onready var _players_giorgio = $Players/Giorgio;
 
 var players = [];
-
-var current_match = [0, 1];
+var current_match = [];
 var players_out = [];
+var time = 0;
+
+func _physics_process(delta):
+	time += delta;
+	var yoffset = -abs(sin(time * 20) * 5);
+	
+	if (current_match.size() > 0):
+		if !(0 in current_match):
+			_players_mike.offset.x -= delta * 100;
+			_players_mike.offset.y = yoffset;
+		
+		if !(1 in current_match):
+			_players_rachel.offset.x -= delta * 150;
+			_players_rachel.offset.y = yoffset;
+		
+		if !(2 in current_match):
+			_players_james.offset.x += delta * 100;
+			_players_james.offset.y = yoffset;
+
+		if !(3 in current_match):
+			_players_giorgio.offset.x += delta * 120;
+			_players_giorgio.offset.y = yoffset;
+		
+		
+		
 
 func _ready():
 	for player_indicator in _player_indicators:

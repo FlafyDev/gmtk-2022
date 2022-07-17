@@ -146,11 +146,11 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="Container/CenterContainer2"]
-margin_left = 230.0
+margin_left = 295.0
 margin_top = 94.0
-margin_right = 730.0
+margin_right = 665.0
 margin_bottom = 444.0
-rect_min_size = Vector2( 500, 350 )
+rect_min_size = Vector2( 370, 350 )
 custom_styles/panel = SubResource( 2 )
 
 [node name="CenterContainer" type="CenterContainer" parent="Container"]
