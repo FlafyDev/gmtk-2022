@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Rachel_idle.png-6613f59993ca0907a99cf823f173377a.stex"
+path="res://.import/Rachel_no_purse.png-d55698f8526126503c9efc27eead3a19.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arena_background/Rachel_idle.png"
-dest_files=[ "res://.import/Rachel_idle.png-6613f59993ca0907a99cf823f173377a.stex" ]
+source_file="res://arena_background/Rachel_no_purse.png"
+dest_files=[ "res://.import/Rachel_no_purse.png-d55698f8526126503c9efc27eead3a19.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

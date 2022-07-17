@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://arena_background/back1.png" type="Texture" id=1]
 [ext_resource path="res://arena_background/arena_background.gd" type="Script" id=2]
@@ -6,10 +6,77 @@
 [ext_resource path="res://arena_background/back2.png" type="Texture" id=4]
 [ext_resource path="res://arena_background/hop.gd" type="Script" id=5]
 [ext_resource path="res://arena_background/friend_background.png" type="Texture" id=6]
-[ext_resource path="res://arena_background/gang_small.png" type="Texture" id=7]
+[ext_resource path="res://arena_background/Mike_idle.png" type="Texture" id=7]
 [ext_resource path="res://arena_background/agents_small.png" type="Texture" id=8]
 [ext_resource path="res://arena_background/gang_underarrest.png" type="Texture" id=9]
 [ext_resource path="res://arena_background/Giorgio_idle.png" type="Texture" id=10]
+[ext_resource path="res://arena_background/james_gun.png" type="Texture" id=11]
+[ext_resource path="res://arena_background/James_idle.png" type="Texture" id=12]
+[ext_resource path="res://arena_background/Giorgio_onphone2.png" type="Texture" id=13]
+[ext_resource path="res://arena_background/Rachel_idle.png" type="Texture" id=14]
+[ext_resource path="res://arena_background/phone_ring.png" type="Texture" id=15]
+[ext_resource path="res://arena_background/exc mark.png" type="Texture" id=16]
+[ext_resource path="res://arena_background/Rachel_no_purse.png" type="Texture" id=17]
+[ext_resource path="res://arena_background/gang_small.png" type="Texture" id=18]
+[ext_resource path="res://arena_background/purse.png" type="Texture" id=19]
+[ext_resource path="res://arena_background/rachel_slap1.png" type="Texture" id=20]
+[ext_resource path="res://arena_background/friend_calls_2.png" type="Texture" id=21]
+[ext_resource path="res://arena_background/friend_calls_1.png" type="Texture" id=22]
+
+[sub_resource type="Animation" id=9]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/path = NodePath("LeftPlayer:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ null ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RightPlayer:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ null ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "gang_arrested"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("GangArrested:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GangArrested:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -174, 145 ), Vector2( 480, 145 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "gang_in_and_out"
@@ -24,7 +91,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 7 ) ]
+"values": [ ExtResource( 18 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("AgentsSmall:position")
@@ -111,8 +178,151 @@ tracks/7/keys = {
 "values": [ Vector2( 2, 2 ), Vector2( 2, 2 ), Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0, 0 ) ]
 }
 
+[sub_resource type="Animation" id=12]
+resource_name = "giorgio_no_phone_left"
+tracks/0/type = "value"
+tracks/0/path = NodePath("LeftPlayer:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "giorgio_no_phone_right"
+tracks/0/type = "value"
+tracks/0/path = NodePath("RightPlayer:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "giorgio_phone_left"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("LeftPlayer:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ), ExtResource( 13 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeftPlayer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.57, 0.6, 0.97, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 2, 2 ), Vector2( -2, 2 ), Vector2( -2, 2 ), Vector2( 2, 2 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "giorgio_phone_right"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("RightPlayer:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ), ExtResource( 13 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RightPlayer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.59, 0.6, 0.95, 0.97 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 2, 2 ), Vector2( -2, 2 ), Vector2( -2, 2 ), Vector2( 2, 2 ) ]
+}
+
 [sub_resource type="Animation" id=4]
 resource_name = "giorgio_phone_ring_left"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("GiorgioOverlayLeft:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.7, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false, true, false ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "giorgio_phone_ring_right"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("GiorgioOverlayRight:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.3, 1.6, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "james_gun"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("RightPlayer:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ), ExtResource( 11 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RightPlayer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 760, 300 ), Vector2( 660, 300 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "man_in"
@@ -139,7 +349,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.2, 1.9, 2.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 481, 156 ), Vector2( 1160, 100 ), Vector2( 1160, 300 ), Vector2( 481, 300 ) ]
+"values": [ Vector2( 481, 156 ), Vector2( 1160, 200 ), Vector2( 1160, 300 ), Vector2( 481, 300 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:texture")
@@ -163,7 +373,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 1.2, 1.9 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2, 2 ), Vector2( 3, 3 ), Vector2( 2, 2 ) ]
+"values": [ Vector2( 2, 2 ), Vector2( 2, 2 ), Vector2( 2, 2 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Friend:hop")
@@ -296,7 +506,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "open_friend"
-length = 3.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
@@ -316,10 +526,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 1, 1.8, 2.8, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ null, ExtResource( 6 ) ]
+"values": [ null, ExtResource( 6 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 6 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Friend:scale")
@@ -331,7 +541,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [ Vector2( 2, 2 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Friend:position")
@@ -343,7 +553,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 481, 156 ) ]
+"values": [ Vector2( 480, 106 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Friend:hop")
@@ -383,7 +593,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1, 3.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ null, ExtResource( 7 ), null ]
+"values": [ null, ExtResource( 18 ), null ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("AgentsSmall:hop")
@@ -407,7 +617,279 @@ tracks/3/keys = {
 "times": PoolRealArray( 1, 1.7, 3.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 480, 132 ), Vector2( 480, 132 ), Vector2( -110, 132 ) ]
+"values": [ Vector2( 480, 132 ), Vector2( 480, 132 ), Vector2( -120, 132 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "rachel_slap"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("RightPlayer:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1.4, 1.79927 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 14 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 17 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LeftPlayer:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Purse:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("RightPlayer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.8, 1.2, 1.39961, 1.4, 1.79923, 1.79927, 2.5, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 760, 300 ), Vector2( 760, 300 ), Vector2( 401.753, 300 ), Vector2( 401.753, 300 ), Vector2( 310, 300 ), Vector2( 310, 300 ), Vector2( 401, 300 ), Vector2( 401, 300 ), Vector2( 1200, 300 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "rachel_walks_in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("RachelSmall:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -174, 145 ), Vector2( 480, 145 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RachelSmall:hop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ExcMark:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.4, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("RachelSmall:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 17 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "rachel_walks_in_front"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("RachelSmall:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.7, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -174, 145 ), Vector2( 480, 145 ), Vector2( 480, 145 ), Vector2( 480, 195 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RachelSmall:hop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.7, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ExcMark:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.4, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("RachelSmall:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.7, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.7, 0.7 ), Vector2( 0.7, 0.7 ), Vector2( 2, 2 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("RachelSmall:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 17 ) ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "rachel_walks_out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("RachelSmall:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 480, 145 ), Vector2( -174, 145 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RachelSmall:hop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "rachel_walks_out_back"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("RachelSmall:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.6, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 480, 195 ), Vector2( 480, 145 ), Vector2( 480, 145 ), Vector2( -174, 145 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RachelSmall:hop")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.6, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ExcMark:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.4, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("RachelSmall:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 0.7, 0.7 ), Vector2( 0.7, 0.7 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("RachelSmall:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 14 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Purse:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [node name="Control" type="Control"]
@@ -421,22 +903,37 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/default = SubResource( 9 )
+anims/gang_arrested = SubResource( 10 )
 anims/gang_in_and_out = SubResource( 7 )
+anims/giorgio_no_phone_left = SubResource( 12 )
+anims/giorgio_no_phone_right = SubResource( 14 )
+anims/giorgio_phone_left = SubResource( 13 )
+anims/giorgio_phone_right = SubResource( 15 )
 anims/giorgio_phone_ring_left = SubResource( 4 )
+anims/giorgio_phone_ring_right = SubResource( 16 )
+anims/james_gun = SubResource( 8 )
 anims/man_in = SubResource( 1 )
 anims/man_out = SubResource( 2 )
 anims/open_agents = SubResource( 5 )
 anims/open_friend = SubResource( 3 )
 anims/open_gang = SubResource( 6 )
+anims/rachel_slap = SubResource( 18 )
+anims/rachel_walks_in = SubResource( 11 )
+anims/rachel_walks_in_front = SubResource( 19 )
+anims/rachel_walks_out = SubResource( 17 )
+anims/rachel_walks_out_back = SubResource( 20 )
 
 [node name="Friend" type="Sprite" parent="."]
-position = Vector2( 481, 156 )
+position = Vector2( -40, 156 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
 script = ExtResource( 5 )
 
 [node name="AgentsSmall" type="Sprite" parent="."]
-position = Vector2( 490, 133 )
-scale = Vector2( 1e-05, 1e-05 )
-texture = ExtResource( 7 )
+position = Vector2( -120, 132 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 18 )
 script = ExtResource( 5 )
 hop = true
 
@@ -445,13 +942,50 @@ position = Vector2( -174, 145 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
 
+[node name="RachelSmall" type="Sprite" parent="."]
+position = Vector2( -174, 145 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 17 )
+script = ExtResource( 5 )
+
+[node name="ExcMark" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 555, 58 )
+scale = Vector2( 3.14131, 3.60112 )
+texture = ExtResource( 16 )
+
 [node name="LeftPlayer" type="Sprite" parent="."]
-position = Vector2( 474, 145 )
-scale = Vector2( 1e-05, 1e-05 )
-texture = ExtResource( 10 )
+position = Vector2( 200, 300 )
+scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="RightPlayer" type="Sprite" parent="."]
 position = Vector2( 760, 300 )
 scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GiorgioOverlayLeft" type="Sprite" parent="."]
+visible = false
+position = Vector2( 200, 258 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 15 )
+
+[node name="GiorgioOverlayRight" type="Sprite" parent="."]
+visible = false
+position = Vector2( 760, 258 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 15 )
+
+[node name="Purse" type="Sprite" parent="."]
+visible = false
+position = Vector2( 898, 140 )
+scale = Vector2( 2, 2 )
+z_index = 100
+texture = ExtResource( 19 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -5,6 +5,7 @@ signal animation_finished;
 onready var animation_player = $AnimationPlayer;
 onready var _left_player_sprite = $LeftPlayer;
 onready var _right_player_sprite = $RightPlayer;
+onready var _purse = $Purse;
 
 var in_or_out;
 var left_player;
@@ -26,6 +27,9 @@ func get_silhouette_image(player):
 			return load("res://arena_background/James_idle.png");
 		"Giorgio":
 			return load("res://arena_background/Giorgio_idle.png");
+
+func set_bag(visible: bool):
+	_purse.visible = visible;
 
 func show_man():
 	animation_player.play("open_friend");

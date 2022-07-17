@@ -17,12 +17,14 @@ func ending(type):
 	match type:
 		"good":
 			pages = [
-				"The next day a newspaper rolled out. A detective found out gansters were"\
-				+ " planning to rob the casino.",
+				"The next day a newspaper rolled out. A criminal organization was"\
+				+ " arrested trying to rob a well renowned casino.",
+				"The agent that reported on the event testified that if it were not for some very odd coincidences, the thieves would most likely have gotten away with their crime.",
+				"It seems like even small deeds can have significant effects.",
 			];
 		"bad":
 			pages = [
-				"A few days later, a group of gangsters robbed everyone in the"\
+				"Later that night, a group of gangsters robbed everyone in the"\
 				+ " casino.",
 				"I wonder, could you have done anything to stop it?",
 			];

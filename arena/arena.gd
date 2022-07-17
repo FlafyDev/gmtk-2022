@@ -1,6 +1,6 @@
 extends Control
 
-signal found_winner(player);
+signal found_winner(player, bag_stayed);
 
 onready var textbox = $Textbox;
 onready var progress_bar = $CenterContainer/ProgressBar;
@@ -21,6 +21,7 @@ var dice_goal = 0;
 var dice_sum = 0;
 var get_events: FuncRef = null;
 var events = null;
+var good_ending = false;
 # args: (next_turn: Turn, current_sum: int, winner_name: String, left_player: String, right_player: String)
 
 enum Turn {
@@ -30,6 +31,7 @@ enum Turn {
 
 var turn = Turn.LEFT;
 var winner = null;
+var bag_stayed = false;
 
 func _ready():
 	_rng.randomize();
@@ -49,11 +51,12 @@ func _ready():
 #		]];
 
 
-func start(goal: int, initial_turn = Turn.RIGHT):
+func start(goal: int, bag_stayed: bool = false):
+	arena_background.set_bag(bag_stayed);
 	progress_bar.visible = true;
 	dice_sum = 0;
 	dice_goal = goal;
-	turn = initial_turn;
+	turn = Turn.RIGHT;
 	progress_bar.set_max_progress(goal);
 	progress_bar.set_progress(dice_sum, false);
 	arena_background.set_players(left_player, right_player);
@@ -69,7 +72,7 @@ func do_turn():
 			end_round_label.text = right_player + " WON!";
 			end_round_label.set("custom_colors/font_color", Color.green);
 		
-		emit_signal("found_winner", winner);
+		emit_signal("found_winner", winner, false if winner == "Rachel" else bag_stayed, good_ending);
 		return;
 	
 	if (turn == Turn.RIGHT):
@@ -89,6 +92,8 @@ func set_players(left_player, right_player):
 func process_event(event):
 	var type = event[0];
 	match type:
+		"wait":
+			yield(get_tree().create_timer(event[1]), "timeout")
 		"dialogue":
 			textbox.dialogue = event[1];
 			textbox.play();
@@ -101,13 +106,50 @@ func process_event(event):
 			arena_background.in_or_out = "out";
 			arena_background.show_man();
 			yield(arena_background, "animation_finished");
-		"giorgio_phone_ring":
-			pass
 		"open_agents":
-			arena_background.animation_player.play("open_agents")
+			arena_background.animation_player.play("open_agents");
+			yield(arena_background.animation_player, "animation_finished");
+		"james_gun":
+			arena_background.animation_player.play("james_gun");
 			yield(arena_background.animation_player, "animation_finished");
 		"gang_in_and_out":
-			arena_background.animation_player.play("gang_in_and_out")
+			arena_background.animation_player.play("gang_in_and_out");
+			yield(arena_background.animation_player, "animation_finished");
+		"giorgio_no_phone":
+			var side = "left" if (left_player == "Giorgio") else "right";
+			arena_background.animation_player.play("giorgio_no_phone_%s" % [side]);
+			yield(arena_background.animation_player, "animation_finished");
+		"giorgio_phone":
+			var side = "left" if (left_player == "Giorgio") else "right";
+			arena_background.animation_player.play("giorgio_phone_%s" % [side]);
+			yield(arena_background.animation_player, "animation_finished");
+		"giorgio_phone_ring":
+			var side = "left" if (left_player == "Giorgio") else "right";
+			print("giorgio_phone_ring_%s" % [side]);
+			arena_background.animation_player.play("giorgio_phone_ring_%s" % [side]);
+			yield(arena_background.animation_player, "animation_finished");
+		"rachel_walks_in":
+			arena_background.animation_player.play("rachel_walks_in");
+			yield(arena_background.animation_player, "animation_finished");
+		"rachel_walks_out":
+			arena_background.animation_player.play("rachel_walks_out");
+			yield(arena_background.animation_player, "animation_finished");
+		"rachel_slap":
+			bag_stayed = true;
+			arena_background.animation_player.play("rachel_slap");
+			yield(arena_background.animation_player, "animation_finished");
+		"gang_arrested":
+			good_ending = true;
+			arena_background.animation_player.play("gang_arrested");
+			yield(arena_background.animation_player, "animation_finished");
+		"rachel_walks_out_back":
+			arena_background.animation_player.play("rachel_walks_out_back");
+			yield(arena_background.animation_player, "animation_finished");
+		"rachel_walks_in_front":
+			arena_background.animation_player.play("rachel_walks_in_front");
+			yield(arena_background.animation_player, "animation_finished");
+		"open_gang":
+			arena_background.animation_player.play("open_gang");
 			yield(arena_background.animation_player, "animation_finished");
 		_:
 			print("ERROR: unknown event type: %s" % [type]);

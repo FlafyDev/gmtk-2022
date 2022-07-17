@@ -3,6 +3,7 @@ extends Node2D
 onready var _fade_in_tween = $FadeInTween;
 onready var _delay_timer = $DelayTimer;
 onready var _delay_2_timer = $Delay2Timer;
+onready var _canvas_layer =$CanvasLayer;
 
 var num_of_round = 0;
 var current_match = null;
@@ -14,10 +15,16 @@ var players = [
 ];
 var players_out = [];
 var event_provider;
+var bag_stayed = false;
+var good_ending = false;
 
 func _ready():
 	event_provider = load("res://event_provider/event_provider.gd").new();
 	switch_to_instructions();
+
+func _input(event):
+	if OS.is_debug_build() && event.is_action_released("ui_focus_next"):
+		Engine.time_scale = 1 if Engine.time_scale == 100 else 100;
 
 func reset_all():
 	players_out = [];
@@ -45,18 +52,20 @@ func switched_scene():
 				
 			current_scene.start([
 				12,
-				7,
-				32,
-			][num_of_round]);
+				8,
+				22,
+			][num_of_round], bag_stayed);
 		
 		SceneType.ENDING:
-			current_scene.ending("bad");
+			current_scene.ending("good" if good_ending == true else "bad");
 
 func _on_overview_found_match(new_match):
 	current_match = new_match;
 	_delay_timer.start();
 
-func _on_arena_found_winner(winner):
+func _on_arena_found_winner(winner, bag_stayed, good_ending):
+	self.bag_stayed = bag_stayed;
+	self.good_ending = good_ending;
 	num_of_round += 1;
 	winner = current_match[0] if winner == players[current_match[0]] \
 		else current_match[1];
@@ -128,7 +137,7 @@ func switch_scene(scene):
 		transitioning_color_rect = ColorRect.new();
 		transitioning_color_rect.color = Color(0, 0, 0, 0);
 		transitioning_color_rect.rect_size = Vector2(960, 540);
-		add_child(transitioning_color_rect);
+		_canvas_layer.add_child(transitioning_color_rect);
 		_fade_in_tween.interpolate_property(transitioning_color_rect,\
 		 	"color", null, Color.black, 1
 		);
@@ -138,7 +147,7 @@ func switch_scene(scene):
 		print("TRIED TO CHANGE SCENE WHILE CHANGING.");
 
 func _on_FadeInTween_tween_all_completed():
-	remove_child(transitioning_color_rect);
+	_canvas_layer.remove_child(transitioning_color_rect);
 	transitioning_color_rect = null;
 	remove_child(current_scene);
 	current_scene = scene_to_change_to;

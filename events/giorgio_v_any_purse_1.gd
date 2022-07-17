@@ -14,10 +14,10 @@ func event(next_turn, sum, winner_name, left_player, right_player):
 				[other_player, "You're not going to answer that?"],
 				["Giorgio", "Nah it's just spam."],
 			]],
-			["rachel_walks_in"],
+			["rachel_walks_in_front"],
 			["dialogue", [
 				["Rachel", "Hey, I think I accidentally left my purse here."],
 				["Rachel", "Oh, there it is."],
 			]],
-			["rachel_walks_out"],
+			["rachel_walks_out_back"],
 		];

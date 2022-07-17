@@ -15,6 +15,9 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
 [connection signal="tween_all_completed" from="FadeInTween" to="." method="_on_FadeInTween_tween_all_completed"]
 [connection signal="timeout" from="DelayTimer" to="." method="_on_DelayTimer_timeout"]
 [connection signal="timeout" from="Delay2Timer" to="." method="_on_Delay2Timer_timeout"]

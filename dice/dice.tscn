@@ -57,7 +57,7 @@ script = ExtResource( 2 )
 anims/fall = SubResource( 1 )
 
 [node name="DiceContainer" type="Node2D" parent="."]
-rotation = 0.00144135
+rotation = 6.28319
 
 [node name="Dice" type="Sprite" parent="DiceContainer"]
 texture = ExtResource( 1 )

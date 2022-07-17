@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Rachel_idle.png-6613f59993ca0907a99cf823f173377a.stex"
+path="res://.import/Giorgio_onphone2.png-b8c17596957e7cdc64bb40edc703c686.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arena_background/Rachel_idle.png"
-dest_files=[ "res://.import/Rachel_idle.png-6613f59993ca0907a99cf823f173377a.stex" ]
+source_file="res://arena_background/Giorgio_onphone2.png"
+dest_files=[ "res://.import/Giorgio_onphone2.png-b8c17596957e7cdc64bb40edc703c686.stex" ]
 
 [params]
 
