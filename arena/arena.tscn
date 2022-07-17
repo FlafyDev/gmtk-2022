@@ -15,9 +15,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 960, 540 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="ArenaBackground" parent="." instance=ExtResource( 9 )]
 
@@ -25,22 +22,19 @@ __meta__ = {
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 centered = false
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="DiceLeft" parent="." instance=ExtResource( 4 )]
-position = Vector2( 240, 418 )
+position = Vector2( 240, 439 )
 
 [node name="DiceRight" parent="." instance=ExtResource( 4 )]
-position = Vector2( 720, 418 )
+position = Vector2( 720, 439 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_top = 0.306
 anchor_right = 1.0
 anchor_bottom = 0.881
-margin_top = -0.240005
-margin_bottom = 0.259979
+margin_top = 155.76
+margin_bottom = 57.26
 mouse_filter = 2
 __meta__ = {
 "_edit_lock_": true
@@ -49,15 +43,13 @@ __meta__ = {
 [node name="ProgressBar" parent="CenterContainer" instance=ExtResource( 6 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 430.0
-margin_top = 5.0
-margin_right = 530.0
-margin_bottom = 305.0
-rect_min_size = Vector2( 100, 300 )
+margin_left = 442.0
+margin_top = 6.0
+margin_right = 517.0
+margin_bottom = 206.0
+rect_min_size = Vector2( 75, 200 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="Choice" parent="." instance=ExtResource( 5 )]
 
 [node name="AfterProgressBarWait" type="Timer" parent="."]
 one_shot = true
@@ -66,17 +58,14 @@ one_shot = true
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = 169.0
-margin_bottom = 269.0
+margin_top = 186.0
+margin_bottom = 286.0
 
 [node name="CenterContainer3" type="CenterContainer" parent="HBoxContainer"]
 margin_right = 478.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 3
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="LeftPlayerIndicator" parent="HBoxContainer/CenterContainer3" instance=ExtResource( 7 )]
 anchor_right = 0.0
@@ -92,9 +81,6 @@ margin_right = 960.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 3
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="RightPlayerIndicator" parent="HBoxContainer/CenterContainer4" instance=ExtResource( 7 )]
 anchor_right = 0.0
@@ -108,7 +94,8 @@ margin_bottom = 64.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -117.0
+margin_top = -333.0
+margin_bottom = -216.0
 
 [node name="EndRoundLabel" type="Label" parent="CenterContainer2"]
 margin_left = 480.0
@@ -119,12 +106,15 @@ custom_colors/font_outline_modulate = Color( 0, 0, 0, 0 )
 custom_fonts/font = ExtResource( 8 )
 
 [node name="Textbox" parent="." instance=ExtResource( 2 )]
+rect_min_size = Vector2( 405, 186 )
+
+[node name="Choice" parent="." instance=ExtResource( 5 )]
 
 [connection signal="animation_finished" from="ArenaBackground" to="." method="_on_ArenaBackground_animation_finished"]
 [connection signal="animation_end" from="DiceLeft" to="." method="_on_DiceLeft_animation_end"]
 [connection signal="animation_end" from="DiceRight" to="." method="_on_DiceRight_animation_end"]
 [connection signal="progress_bar_finished" from="CenterContainer/ProgressBar" to="." method="_on_ProgressBar_progress_bar_finished"]
-[connection signal="result" from="Choice" to="." method="_on_Choice_result"]
 [connection signal="timeout" from="AfterProgressBarWait" to="." method="_on_AfterProgressBarWait_timeout"]
 [connection signal="finished" from="Textbox" to="." method="_on_Textbox_finished"]
 [connection signal="new_page" from="Textbox" to="." method="_on_Textbox_new_page"]
+[connection signal="result" from="Choice" to="." method="_on_Choice_result"]

@@ -36,7 +36,7 @@ func switched_scene():
 					current_match[0], current_match[1]);
 			
 		SceneType.ARENA:
-			current_scene.get_event = event_provider.get_event(current_match);
+			current_scene.get_events = event_provider.get_events(current_match);
 			event_provider.previous_matches.append(current_match);
 			
 			current_scene.set_players(\

@@ -19,7 +19,7 @@ var right_player = "";
 var _rng = RandomNumberGenerator.new();
 var dice_goal = 0;
 var dice_sum = 0;
-var get_event: FuncRef = null;
+var get_events: FuncRef = null;
 var events = null;
 # args: (next_turn: Turn, current_sum: int, winner_name: String, left_player: String, right_player: String)
 
@@ -100,6 +100,8 @@ func process_event(event):
 			arena_background.in_or_out = "out";
 			arena_background.show_man();
 			yield(arena_background, "animation_finished");
+		_:
+			print("ERROR: unknown event type: %s" % [type]);
 	
 	do_next_event();
 
@@ -123,8 +125,8 @@ func _on_AfterProgressBarWait_timeout():
 	
 	turn = Turn.RIGHT if turn == Turn.LEFT else Turn.LEFT;
 	
-	events = get_event.call_func(turn, dice_sum, winner, left_player, right_player) \
-		if get_event != null else null;
+	events = get_events.call_func(turn, dice_sum, winner, left_player, right_player) \
+		if get_events != null else null;
 	
 	do_next_event();
 
@@ -137,11 +139,11 @@ func do_next_event():
 
 func _on_Textbox_new_page(name):
 	if (name == left_player):
-		textbox.rect_position.x = 100;
-		textbox.rect_position.y = 100;
+		textbox.rect_position.x = 50;
+		textbox.rect_position.y = 540 - textbox.rect_size.y - 60;
 	elif (name == right_player):
-		textbox.rect_position.x = 960 - 100 - textbox.rect_size.x;
-		textbox.rect_position.y = 100;
+		textbox.rect_position.x = 960 - textbox.rect_size.x - 50;
+		textbox.rect_position.y = 540 - textbox.rect_size.y - 60;
 	else:
 		textbox.rect_position.x = (960 - textbox.rect_size.x)/2;
 		textbox.rect_position.y = 540 - textbox.rect_size.y - 20;

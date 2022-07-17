@@ -12,6 +12,10 @@ var _rng = RandomNumberGenerator.new();
 func _ready():
 	_rng.randomize();
 
+func _input(event):
+	if OS.is_debug_build() && event.is_action_pressed("ui_accept"):
+		Engine.time_scale = 4;
+
 func animate(number: int):
 	self.number = number;
 	_animation_player.play("fall");

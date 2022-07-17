@@ -1,3 +1,5 @@
+extends Node;
+
 func event(next_turn, sum, winner_name, left_player, right_player):
 	if (winner_name == "Rachel"):
 		return ["dialogue", [
