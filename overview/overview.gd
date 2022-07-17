@@ -21,12 +21,7 @@ onready var _lines = [
 onready var _dice = $VBoxContainer/HBoxContainer/Dice;
 onready var _dramatic_match_timer = $DramaticMatchTimer;
 
-var players = [
-	"Name 1",
-	"Name 2",
-	"Name 3",
-	"Name 4",
-];
+var players = [];
 
 var current_match = [0, 1];
 var players_out = [];
@@ -56,6 +51,12 @@ func first_roll():
 	_dice.visible = true;
 	_choice.visible = true;
 	_choice.start();
+
+func set_players(players):
+	self.players = players;
+	for i in range(_player_indicators.size()):
+		var player_indicator = _player_indicators[i];
+		player_indicator.text = players[i];
 
 func set_current_match(player1, player2):
 	current_match = [player1, player2];

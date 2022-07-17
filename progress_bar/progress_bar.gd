@@ -19,7 +19,7 @@ func set_max_progress(num: int):
 
 func set_progress(num: int, animate: bool = true):
 	var prev_progress = self.progress;
-	self.progress = num;
+	self.progress = min(num, self.max_progress);
 	
 	if (animate):
 		_progress_label.text = str(prev_progress);

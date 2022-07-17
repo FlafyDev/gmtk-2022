@@ -7,4 +7,14 @@ script = ExtResource( 1 )
 
 [node name="FadeInTween" type="Tween" parent="."]
 
+[node name="DelayTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="Delay2Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="tween_all_completed" from="FadeInTween" to="." method="_on_FadeInTween_tween_all_completed"]
+[connection signal="timeout" from="DelayTimer" to="." method="_on_DelayTimer_timeout"]
+[connection signal="timeout" from="Delay2Timer" to="." method="_on_Delay2Timer_timeout"]

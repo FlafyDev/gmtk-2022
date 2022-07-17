@@ -28,19 +28,25 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		emit_signal("result", selected_input);
 
 func _on_ChoiceDice1_pressed():
-	pressed(1);
+	if (accepting_input):
+		pressed(1);
 
 func _on_ChoiceDice2_pressed():
-	pressed(2);
+	if (accepting_input):
+		pressed(2);
 
 func _on_ChoiceDice3_pressed():
-	pressed(3);
+	if (accepting_input):
+		pressed(3);
 
 func _on_ChoiceDice4_pressed():
-	pressed(4);
+	if (accepting_input):
+		pressed(4);
 
 func _on_ChoiceDice5_pressed():
-	pressed(5);
+	if (accepting_input):
+		pressed(5);
 
 func _on_ChoiceDice6_pressed():
-	pressed(6);
+	if (accepting_input):
+		pressed(6);

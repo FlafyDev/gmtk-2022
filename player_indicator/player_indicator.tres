@@ -3,5 +3,7 @@
 [ext_resource path="res://fonts/upheavtt.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 25
+size = 32
+outline_size = 5
+outline_color = Color( 1, 0.913725, 0, 1 )
 font_data = ExtResource( 1 )

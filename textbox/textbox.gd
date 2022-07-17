@@ -4,6 +4,7 @@ signal finished;
 signal new_page(name);
 
 onready var textNode = $Margin/Text;
+onready var _name_text = $ColorRect/Name;
 
 var dialogue: Array = [];
 var current_page = 0;
@@ -33,8 +34,9 @@ func reset_page():
 	
 	var dialogue_text = dialogue[current_page];
 	
-	emit_signal("new_page", dialogue_text.name);
-	textNode.text = dialogue_text.text;
+	emit_signal("new_page", dialogue_text[0]);
+	_name_text.text = dialogue_text[0];
+	textNode.text = dialogue_text[1];
 	textNode.visible_characters = 0;
 
 func _on_Timer_timeout():

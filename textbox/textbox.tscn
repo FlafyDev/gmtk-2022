@@ -7,7 +7,21 @@
 [node name="Textbox" type="Control"]
 margin_right = 270.0
 margin_bottom = 124.0
+rect_min_size = Vector2( 270, 124 )
 script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_top = -24.0
+margin_right = 270.0
+margin_bottom = 16.0
+color = Color( 0.741176, 0.741176, 0.741176, 1 )
+
+[node name="Name" type="Label" parent="ColorRect"]
+margin_left = 6.0
+margin_right = 80.0
+margin_bottom = 23.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
@@ -33,7 +47,7 @@ custom_fonts/normal_font = ExtResource( 2 )
 meta_underlined = false
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.083
+wait_time = 0.05
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
